@@ -1,0 +1,22 @@
+
+<div class="shop-display">
+  <div class="products">
+  {{#each model as |productItem|}}
+    <div class="product">
+      <b>{{productItem.itemName}}</b>
+      <p>{{productItem.shortDescription}}</p>
+      <p>Available stocks: {{productItem.availableQuantity}}</p>
+      <p>Cost: {{productItem.cost}}</p>
+    </div>
+  {{/each}}
+  </div>
+</div>
+
+<div class="products-creation">
+  
+</div>
+
+<div class="shopping-cart">
+</div>
+{{outlet}}
+
