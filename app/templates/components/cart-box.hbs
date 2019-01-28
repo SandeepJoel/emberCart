@@ -1,0 +1,32 @@
+{{yield}}
+<table>
+  <tr>
+    <th>Product</th>
+    <th>Individual Cost</th>
+    <th> Quantity </th>
+    <th>Product group total Cost</th>
+  </tr>
+{{!-- TODO: investigate how we got cart ember object here --}}
+{{ log "---" cart.cartItems}}
+{{#each cart.cartItems as |cartItem|}}
+  <tr>
+    <td>{{cartItem.itemName}}</td>
+    <td>{{cartItem.cost}}</td>
+    <td>
+      <button {{ action 'incrementQuantity' }}>+</button>
+      {{cartItem.quantity}}
+      <button {{ action 'decrementQuantity' }}>-</button>
+    </td>
+    <td>{{cartItem.productGroupCost}}</td>
+    <td> <button {{action 'deleteItemFromCart' cartItem }}>Delete</button> </td>
+  </tr>
+{{/each}}
+  <tr>
+    <td></td><td></td><td></td><td></td>
+  </tr>
+  <tr>
+    <td></td><td></td>
+    <td>Sum Total: </td>
+    <td>{{cart.cartTotal}}</td>
+  </tr>
+</table>

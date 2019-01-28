@@ -1,0 +1,21 @@
+<div class="shop-display"> 
+  {{outlet}}
+</div>
+<div class="operations">
+    <div class="products-creation">  
+    <h1>Create New Product</h1>
+    Product: {{input value=product }}
+    <br>
+    Short Description: {{ textarea value=shortDescription rows=5 cols=40 }}
+    <br>
+    Cost: {{ input type='number' value=cost }}
+    <br>
+    Stock Quantity: {{ input type='number' value=stockQuantity }}
+    <br>
+    <button onclick= {{ action "createProduct" model.length }}> Add product to the store</button>
+  </div>
+  <div class="shopping-cart">
+    <h1>Cart</h1>
+    {{ cart-box }}
+  </div>
+</div>
