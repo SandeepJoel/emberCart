@@ -1,14 +1,25 @@
 import Ember from 'ember';
-
+/* Structure for 'cartItems' array
+[
+  {
+    itemName: "",
+    cost: ""
+    quantity: "" 
+  },
+  {
+    itemName: "",
+    cost: ""
+    quantity: "" 
+  }
+]
+*/
 export default Ember.Service.extend({
   cartItems: null,
   init() {
     this._super(...arguments);
     this.set('cartItems', [])
   },
-
     
-
   cartTotal: Ember.computed('cartItems.@each.productGroupCost', function(){
     return this.get('cartItems').reduce(function(acc, item){
       return acc + item.productGroupCost
