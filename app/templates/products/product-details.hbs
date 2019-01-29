@@ -1,2 +1,7 @@
-{{outlet}}
+{{#link-to "products" }} back {{/link-to}}
 <h1>{{ model.itemName }}</h1>
+<p>{{ model.description }}</p>
+<p>Available stocks: {{model.avaliableQuantity}}</p>
+<p>Cost: ${{model.cost}}</p>
+{{ add-to-cart product=model }}
+{{outlet}}

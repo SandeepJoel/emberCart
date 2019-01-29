@@ -3,6 +3,8 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   actions: {
     createProduct(productsCount) {
+      console.log('In product creation');
+      // console.log(productsCount);
       let product = this.get('product');
       let shortDescription = this.get('shortDescription')
       let cost = this.get('cost')
@@ -24,7 +26,8 @@ export default Ember.Controller.extend({
       // })
 
       let newProductRecord = this.get('store').createRecord('product', {
-        id: productsCount + 1,
+        // TODO: find how does the id get set here without me setting the id manually ?
+        // id: productsCount + 1
         itemName: product,
         shortDescription: shortDescription,
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit unde necessitatibus magnam ipsum eum animi error dolor accusamus officia dolorum minus, illum rerum aut, quaerat molestias, porro nulla maxime dicta",

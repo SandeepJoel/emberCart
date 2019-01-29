@@ -1,0 +1,180 @@
+
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,700i');
+
+$white: white;
+$whiteish: rgb(214, 214, 214);
+$gray: #EEE;
+$dark-gray: #3d3d3d;
+$color-primary: #F0C130;
+$font-family: 'Lato', sans-serif;
+
+body {
+  background-color: $gray;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: $font-family;
+  font-weight: 300;
+}
+
+a {
+  color: $color-primary;
+  text-decoration: none;
+}
+
+button,
+a {
+  cursor: pointer;
+}
+
+input, 
+textarea {
+  background: none;
+  outline: none;
+}
+
+input {
+  border: none;
+  color: $whiteish;
+  border-bottom: 1px solid $whiteish; 
+}
+
+textarea {
+  border: 1px solid $whiteish; 
+}
+
+button {
+  background: none;
+  border: 1px solid $color-primary;
+  color: $color-primary;
+  outline: none;
+}
+
+.app {
+  display: flex;
+  &.div {
+    margin: 0;
+  }
+}
+
+.shop-display {
+  width: 60%;
+  padding: 30px;
+  
+  button {
+    padding: 8px 20px;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+}
+
+.products-creation {
+  button {
+    min-width: 100px;
+    margin: 15px auto;
+    padding: 15px 20px;
+    font-size: 16px;
+  }
+}
+
+.shopping-cart {
+  h2 {
+    margin-top: 0;
+  }
+}
+
+.form-elements {
+  display: flex;
+  padding: 10px 0;
+  width: 90%;
+  margin: 0 auto;
+
+  label {
+    flex-basis: 30%;
+  }
+  input {
+    flex-basis: 70%;
+    font-size: 12px;
+  }  
+}
+
+.products-creation,
+.shopping-cart {
+  min-height: 250px;
+  padding: 10px 25px;
+  color: $whiteish;
+  display: flex;
+  flex-direction: column;
+
+  h2,
+  h3 {
+    color: $color-primary;
+  }
+}
+
+.products {  
+  display: flex;
+  cursor: pointer;
+  margin-top: 30px;
+  flex-wrap: wrap;  
+}
+
+.product {  
+  flex-basis: 30%;
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: $white;
+  box-shadow: 0 8px 11px rgba(0, 0, 0, 0.1);
+  b {
+   font-weight: 500; 
+  }
+  
+  p {
+    font-size: 13px;
+  }
+
+  .desc
+  &::before {
+    position: absolute;
+  }
+}
+
+.operations {
+  width: 40%;  
+  height: 100vh;
+  position: relative;
+
+  &::before {
+    position: absolute;
+    background: $dark-gray;
+    // filter: blur(5px);
+    content: "";
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -10;    
+  }
+}
+
+td {
+  text-align: center;
+  font-size: 14px;
+  padding: 10px 0;
+}
+
+th {
+  font-weight: 500;
+}
+
+.main-input {
+  width: 90%;
+  margin: 15px auto 0;
+  font-size: 18px;
+  padding: 15px 10px;
+  color: black;
+  display: block;
+  border-bottom: 1px solid #c3c0c0;
+}

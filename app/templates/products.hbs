@@ -1,21 +1,31 @@
+{{log 'xx' model}}
+
 <div class="shop-display"> 
   {{outlet}}
 </div>
 <div class="operations">
-    <div class="products-creation">  
-    <h1>Create New Product</h1>
-    Product: {{input value=product }}
-    <br>
-    Short Description: {{ textarea value=shortDescription rows=5 cols=40 }}
-    <br>
-    Cost: {{ input type='number' value=cost }}
-    <br>
-    Stock Quantity: {{ input type='number' value=stockQuantity }}
-    <br>
-    <button onclick= {{ action "createProduct" model.length }}> Add product to the store</button>
+    <div class="products-creation">
+    <h3>Create New Product</h3>
+    <div class="form-elements">
+      <label>Product</label>  
+      {{input value=product }}
+    </div>     
+    <div class="form-elements">
+      <label>Short Description</label>  
+      {{ input value=shortDescription }}
+    </div>
+    <div class="form-elements">
+      <label>Cost</label>  
+      {{ input type='number' value=cost }}
+    </div>     
+    <div class="form-elements">
+      <label>Stock Quantity</label>  
+      {{ input type='number' value=stockQuantity }}
+    </div>             
+    <button onclick= {{ action "createProduct" }}> Add product to the store</button>
   </div>
   <div class="shopping-cart">
-    <h1>Cart</h1>
-    {{ cart-box }}
+    <h2>Cart</h2>
+    {{ cart-box products=model }}
   </div>
 </div>

@@ -4,7 +4,13 @@
   <div class="products">
   {{#each model as |productItem|}}
     <div class="product">
-      {{ product-item product=productItem }}
+      {{#link-to 'products.product-details' productItem.id}}
+        <b>{{productItem.itemName}}</b>
+      {{/link-to }}
+      <p>{{productItem.shortDescription}}</p>
+      <p>Available stocks: {{productItem.avaliableQuantity}}</p>
+      <p>Cost: ${{productItem.cost}}</p>      
+      {{ add-to-cart product=productItem }}
     </div>
   {{/each}}
   </div>

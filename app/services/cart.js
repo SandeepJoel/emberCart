@@ -7,6 +7,8 @@ export default Ember.Service.extend({
     this.set('cartItems', [])
   },
 
+    
+
   cartTotal: Ember.computed('cartItems.@each.productGroupCost', function(){
     return this.get('cartItems').reduce(function(acc, item){
       return acc + item.productGroupCost
