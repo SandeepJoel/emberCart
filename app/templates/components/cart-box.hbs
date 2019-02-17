@@ -7,17 +7,16 @@
     <th>Group Cost</th>
     <th>Remove</th>
   </tr>
-{{!-- TODO: investigate how we got cart ember object here --}}
-{{#each cart.cartItems as |cartItem|}}
+{{#each cart as |cartItem|}}
   <tr>
-    <td>{{cartItem.itemName}}</td>
-    <td>${{cartItem.cost}}</td>
+    <td>{{cartItem.product.itemName}}</td>
+    <td>${{cartItem.product.cost}}</td>
     <td>
       <button {{ action 'incrementQuantityFromCart' cartItem}}>+</button>
       {{cartItem.quantity}}
       <button {{ action 'decrementQuantityFromCart' cartItem}}>-</button>
-    </td>
-    <td>${{cartItem.productGroupCost}}</td>
+    </td>    
+    <td>${{mult cartItem.product.cost cartItem.quantity }}</td>
     <td> <button {{action 'deleteItemFromCart' cartItem }}>Delete</button> </td>
   </tr>
 {{/each}}
@@ -27,6 +26,6 @@
   <tr>
     <td></td><td></td>
     <td>Sum Total: </td>
-    <td>{{cart.cartTotal}}</td>
+    <td>{{cartTotal}}</td>
   </tr>
 </table>

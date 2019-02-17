@@ -1,32 +1,46 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  cart: Ember.inject.service(),
+  store: Ember.inject.service('store'),
+  cartTotal: Ember.computed('cart.@each.quantity', function(){
+    return this.get('cart').reduce(function(sum, cartitem) {
+      // TODO: what the dot notation (cartitem.quantity) doesn't work here.. ?
+      return (sum + (cartitem.get('quantity') * cartitem.get('product.cost')))
+    }, 0)
+  }),
+  init() {
+    this._super(...arguments);
+  },
   actions: {
     deleteItemFromCart(item){
-      let product = this.get('products').findBy('itemName', item.itemName);
+      let product = item.get('product')
       // restore the display products values
-      Ember.set(product, 'avaliableQuantity', Ember.get(product, 'avaliableQuantity') + item.quantity)
-      this.get('cart').deleteItemFromCart(item)
+      product.set('avaliableQuantity', product.get('avaliableQuantity') + item.get('quantity'))
+      this.get('store').findRecord('cartitem', item.get('id'), { backgroundReload: false} ).then(function(cartitem){
+        cartitem.deleteRecord();
+        cartitem.save();
+      }) 
     },
     decrementQuantityFromCart(item) {
-      // TODO: fix the dependencies --- check if there are any other ways ?
-      let product = this.get('products').findBy('itemName', item.itemName)
-      if (item.quantity > 1) {
-        this.get('products').findBy('itemName', item.itemName).incrementProperty('avaliableQuantity');
-        Ember.set(item, 'quantity', Ember.get(item, 'quantity') - 1);
-        Ember.set(item, 'productGroupCost', Ember.get(item, 'quantity') * item.cost );
-      } else if (item.quantity == 1) {
+      let product = item.get('product');
+      if (item.get('quantity') > 1) {
+        product.incrementProperty('avaliableQuantity')
+        this.get('store').findRecord('cartitem', item.get('id'), { backgroundReload: false} ).then(function(cartitem){
+          cartitem.decrementProperty('quantity');
+          cartitem.save();
+        })
+      } else if (item.get('quantity') == 1) {
         this.send('deleteItemFromCart', item);
       }
     },
     incrementQuantityFromCart(item) {
-      // TODO: fix the dependencies
-      let product = this.get('products').findBy('itemName', item.itemName)
-      if (Ember.get(product, 'avaliableQuantity') > 0) {
-        this.get('products').findBy('itemName', item.itemName).decrementProperty('avaliableQuantity');
-        Ember.set(item, 'quantity', Ember.get(item, 'quantity') + 1);
-        Ember.set(item, 'productGroupCost', Ember.get(item, 'quantity') * item.cost );
+      let product = item.get('product');
+      if (product.get('avaliableQuantity') > 0) {
+        product.decrementProperty('avaliableQuantity')
+        this.get('store').findRecord('cartitem', item.get('id'), { backgroundReload: false} ).then(function(cartitem){
+          cartitem.incrementProperty('quantity');
+          cartitem.save();
+        })
       } 
     }
   }  

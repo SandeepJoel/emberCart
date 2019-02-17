@@ -1,8 +1,8 @@
 {{outlet}}
-  Total products: {{ model.length }}
+  Total products: {{ model.product.length }}
   {{input class="main-input" type="text" value=this.searchValue placeholder="Find your items"}}
   <div class="products">
-  {{#each model as |productItem|}}
+  {{#each model.product as |productItem|}}
     <div class="product">
       {{#link-to 'products.product-details' productItem.id}}
         <b>{{productItem.itemName}}</b>

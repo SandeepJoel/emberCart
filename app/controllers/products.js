@@ -2,32 +2,13 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   actions: {
-    createProduct(productsCount) {
-      console.log('In product creation');
-      // console.log(productsCount);
+    createProduct() {
       let product = this.get('product');
       let shortDescription = this.get('shortDescription')
       let cost = this.get('cost')
       let stockQuantity = this.get('stockQuantity')
       
-      // what is the difference between these two methods
-      // this.get('store').push({
-      //   data: {          
-      //     type: 'product',
-      //     id: productsCount + 1,
-      //     attributes: {
-      //       itemName: product,
-      //       shortDescription: shortDescription,
-      //       description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit unde necessitatibus magnam ipsum eum animi error dolor accusamus officia dolorum minus, illum rerum aut, quaerat molestias, porro nulla maxime dicta",
-      //       cost: cost,
-      //       avaliableQuantity: stockQuantity,
-      //     }
-      //   }
-      // })
-
-      let newProductRecord = this.get('store').createRecord('product', {
-        // TODO: find how does the id get set here without me setting the id manually ?
-        // id: productsCount + 1
+      let newProductRecord = this.get('store').createRecord('product', {    
         itemName: product,
         shortDescription: shortDescription,
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit unde necessitatibus magnam ipsum eum animi error dolor accusamus officia dolorum minus, illum rerum aut, quaerat molestias, porro nulla maxime dicta",

@@ -1,2 +1,2 @@
-<button {{ action 'addToCart' product }} disabled={{if product.avaliableQuantity false true }}> 
+<button {{ action 'addToCart' product}} disabled={{if product.avaliableQuantity false true }}> 
   {{if product.avaliableQuantity "Add to cart" "Product Out of stock"}} </button>

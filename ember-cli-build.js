@@ -9,6 +9,10 @@ module.exports = function(defaults) {
       includePaths: [
         'app/styles/'
       ]
+    },
+
+    'ember-math-helpers': {
+      only: ['add', 'sub', 'mult', 'div']
     }
   });
 

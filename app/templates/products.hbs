@@ -1,5 +1,3 @@
-{{log 'xx' model}}
-
 <div class="shop-display"> 
   {{outlet}}
 </div>
@@ -26,6 +24,6 @@
   </div>
   <div class="shopping-cart">
     <h2>Cart</h2>
-    {{ cart-box products=model }}
+    {{ cart-box cart=model.cart }}
   </div>
 </div>
