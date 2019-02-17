@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('add-to-cart', 'Integration | Component | product item', {
+moduleForComponent('add-to-cart', 'Integration | Component | add to cart', {
   integration: true
 });
 
